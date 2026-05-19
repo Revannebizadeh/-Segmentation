@@ -1,18 +1,4 @@
-"""
-unet_segmentation.py  —  v3
-============================
-Oxford-IIIT Pet Dataset — Binary Semantic Segmentation with U-Net
 
-YENİLİKLƏR (v3):
-  ✅  Data Augmentation   — RandomHorizontalFlip, RandomRotation, ColorJitter
-  ✅  ImageNet Normalize  — Normalize(mean=[0.485,..], std=[0.229,..])
-  ✅  LR Scheduler        — ReduceLROnPlateau (patience=2, factor=0.5)
-
-İSTİFADƏ:
-  python unet_segmentation.py              → sürətli train (5 epoch)
-  python unet_segmentation.py --train      → tam train (15 epoch)
-  python unet_segmentation.py --test it.jpg   → öyrədilmiş modeli yüklə, şəkli test et
-"""
 
 # ═════════════════════════════════════════════════════════════
 # SECTION 0 — AUTO INSTALL DEPENDENCIES
@@ -72,13 +58,13 @@ from torchvision.datasets import OxfordIIITPet
 # SECTION 2 — CONFIGURATION
 # ═════════════════════════════════════════════════════════════
 
-# SÜRƏTLI CONFIG (default) — GPU olmadan ~5-8 dəqiqə
+
 FAST_CONFIG = {
     "data_root"    : "./data",
-    "img_size"     : 64,          # 128→64: 4x sürətli
+    "img_size"     : 64,          # 128→64: 4x sürətli  komputering guucu az idi deye
     "batch_size"   : 32,          # böyük batch → az iteration
     "val_split"    : 0.2,
-    "epochs"       : 5,           # 15→5
+    "epochs"       : 5,           # 15→5  vaxt cox alirdi 
     "lr"           : 1e-3,
     "download"     : True,
     "num_workers"  : 0,           # Windows/Mac uyumluluğu üçün 0
@@ -87,7 +73,7 @@ FAST_CONFIG = {
     "save_path"    : "unet_pet_segmentation.pth",
 }
 
-# TAM CONFIG (--train flag ilə)
+
 FULL_CONFIG = {
     "data_root"    : "./data",
     "img_size"     : 128,
